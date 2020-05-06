@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.security.RolesAllowed;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -23,7 +24,7 @@ public class OrderController {
     @RequestMapping("/findAll.do")
     //这个注解不能省略ROLE_这个前缀
     //@Secured("ROLE_ADMIN")
-    public ModelAndView findAll(@RequestParam(name = "page", required = true, defaultValue = "1")Integer page, @RequestParam(name = "size", required = true, defaultValue = "2")Integer size) throws Exception {
+    public ModelAndView findAll(@RequestParam(name = "page", required = true, defaultValue = "1") Integer page, @RequestParam(name = "size", required = true, defaultValue = "2") Integer size) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         List<Orders> ordersList = ordersService.findAll(page, size);
         //pageInfo就是一个分页Bean
@@ -34,11 +35,12 @@ public class OrderController {
     }
 
     @RequestMapping("/findById.do")
-    public ModelAndView findById(@RequestParam(name = "id",required = true)String ordersId) throws Exception {
+    public ModelAndView findById(@RequestParam(name = "id", required = true) String ordersId) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         Orders byId = ordersService.findById(ordersId);
-        modelAndView.addObject("orders",byId);
+        modelAndView.addObject("orders", byId);
         modelAndView.setViewName("orders-show");
         return modelAndView;
     }
+
 }

@@ -4,9 +4,7 @@ import com.jinchao.domain.Role;
 import com.jinchao.domain.UserInfo;
 import com.jinchao.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -68,6 +66,24 @@ public class UserController {
     @RequestMapping("/addRoleToUser.do")
     public String addRoleToUser(@RequestParam(name = "userId",required = true)String userId,@RequestParam(name = "ids",required = true)String[] roleIds) {
         userService.addRoleToUser(userId, roleIds);
+        return "redirect:findAll.do";
+    }
+
+    @RequestMapping("/edit.do")
+    public ModelAndView edit(@RequestParam(name = "id",required = true) String id) throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+        UserInfo user =  userService.findById(id);
+        modelAndView.addObject("user" , user);
+        modelAndView.addObject("id" , user.getId());
+        modelAndView.setViewName("user-edit");
+        return modelAndView;
+    }
+
+    //update
+    @RequestMapping("/update.do")
+    public String edit(UserInfo user){
+        System.out.println(user);
+        userService.update(user);
         return "redirect:findAll.do";
     }
 }

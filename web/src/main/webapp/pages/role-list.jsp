@@ -151,6 +151,7 @@
 											<td>${role.roleDesc }</td>																				
 											<td class="text-center">
 												<a href="${pageContext.request.contextPath}/role/findById.do?id=${role.id}" class="btn bg-olive btn-xs">详情</a>
+												<a class="btn bg-olive btn-xs">编辑</a>
 												<a href="${pageContext.request.contextPath}/role/findRoleByIdAndAllPermission.do?id=${role.id}" class="btn bg-olive btn-xs">添加权限</a>
 											</td>
 										</tr>
@@ -215,15 +216,7 @@
 			<!-- @@close -->
 			<!-- 内容区域 /-->
 
-			<!-- 底部导航 -->
-			<footer class="main-footer">
-			<div class="pull-right hidden-xs">
-				<b>Version</b> 1.0.8
-			</div>
-			<strong>Copyright &copy; 2014-2017 <a
-				href="http://www.itcast.cn">研究院研发部</a>.
-			</strong> All rights reserved. </footer>
-			<!-- 底部导航 /-->
+
 
 		</div>
 

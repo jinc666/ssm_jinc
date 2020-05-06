@@ -35,4 +35,28 @@ public class ProductController {
         productService.save(product);
         return "redirect:findAll.do";
     }
+
+
+    @RequestMapping("/deleteProduct.do")
+    public String deleteProduct(@RequestParam(name = "id",required = true) String id) throws Exception{
+        productService.deleteProduct(id);
+        return "redirect:findAll.do";
+    }
+
+    @RequestMapping("/editProduct.do")
+    public ModelAndView updateProduct(@RequestParam(name = "id",required = true) String id) throws Exception{
+        ModelAndView modelAndView = new ModelAndView();
+        Product product = productService.findProductById(id);
+        modelAndView.addObject("product" , product);
+        modelAndView.addObject("id" , product.getId());
+        modelAndView.setViewName("product-update");
+        return modelAndView;
+    }
+
+    @RequestMapping("/updateProduct.do")
+    public String updateProduct(Product product){
+        System.out.println(product);
+        productService.updateProduct(product);
+        return "redirect:findAll.do";
+    }
 }

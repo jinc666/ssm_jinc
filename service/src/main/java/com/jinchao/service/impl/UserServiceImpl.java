@@ -77,4 +77,9 @@ public class UserServiceImpl implements IUserService {
             userDao.addRoleToUser(userId,roleId);
         }
     }
+
+    @Override
+    public void update(UserInfo userInfo) {
+        userDao.update(userInfo);
+    }
 }

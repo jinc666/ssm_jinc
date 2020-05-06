@@ -45,4 +45,7 @@ public interface IUserDao {
 
     @Insert("insert into users_role(userId,roleId) values(#{userId},#{roleId})")
     void addRoleToUser(@Param("userId") String userId , @Param("roleId") String roleId);
+
+    @Update("update users set username=#{username},password=#{password},email=#{email},phoneNum=#{phoneNum},status=#{status} where id = #{id}")
+    void update(UserInfo userInfo);
 }

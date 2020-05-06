@@ -39,4 +39,6 @@ public interface IOrdersDao {
             @Result(property = "travellers", column = "id",javaType = List.class,many = @Many(select = "com.jinchao.dao.ITravellerDao.findByOrdersId"))
     })
     Orders findById(String ordersId) throws Exception;
+
+
 }

@@ -64,8 +64,8 @@ public class Orders {
     public String getOrderStatusStr() {
         if (orderStatus==1){
             orderStatusStr="未支付";
-        }else if (orderStatus==1){
-            orderStatusStr="未支付";
+        }else if (orderStatus==0){
+            orderStatusStr="已支付";
         }
         return orderStatusStr;
     }

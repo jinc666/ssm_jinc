@@ -15,16 +15,31 @@ import java.util.List;
 public class ProductServiceImpl implements IProductService {
 
     @Autowired
-    private IProductDao IProductDao;
+    private IProductDao productDao;
 
     @Override
     public List<Product> findAll(int page, int size) throws Exception {
         PageHelper.startPage(page, size);
-        return IProductDao.findAll();
+        return productDao.findAll();
     }
 
     @Override
     public void save(Product product) throws Exception {
-        IProductDao.save(product);
+        productDao.save(product);
+    }
+
+    @Override
+    public void deleteProduct(String id) {
+        productDao.deleteProduct(id);
+    }
+
+    @Override
+    public Product findProductById(String id) {
+        return productDao.findProductById(id);
+    }
+
+    @Override
+    public void updateProduct(Product product) {
+        productDao.updateProduct(product);
     }
 }
