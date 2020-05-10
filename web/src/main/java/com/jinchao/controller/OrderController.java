@@ -43,4 +43,20 @@ public class OrderController {
         return modelAndView;
     }
 
+    //orders-edit
+    @RequestMapping("/edit.do")
+    public ModelAndView edit(String id)throws Exception{
+        ModelAndView modelAndView = new ModelAndView();
+        Orders order = ordersService.findById(id);
+        modelAndView.addObject("order" , order);
+        modelAndView.addObject("id" ,order.getId());
+        modelAndView.setViewName("orders-edit");
+        return modelAndView;
+    }
+
+    @RequestMapping("/update.do")
+    public String update(Orders orders)throws Exception{
+        ordersService.update(orders);
+        return "redirect:findAll.do";
+    }
 }

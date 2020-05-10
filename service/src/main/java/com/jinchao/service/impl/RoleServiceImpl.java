@@ -43,4 +43,9 @@ public class RoleServiceImpl implements IRoleService {
             roleDao.addPermissionToRole(roleId,permissionId);
         }
     }
+
+    @Override
+    public void update(Role role) {
+        roleDao.update(role);
+    }
 }

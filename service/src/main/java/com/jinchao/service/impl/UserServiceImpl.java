@@ -72,14 +72,14 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void addRoleToUser(String userId, String[] roleIds) {
+    public void addRoleToUser(String userId, String[] roleIds) throws Exception{
         for (String roleId : roleIds) {
             userDao.addRoleToUser(userId,roleId);
         }
     }
 
     @Override
-    public void update(UserInfo userInfo) {
+    public void update(UserInfo userInfo) throws Exception{
         userDao.update(userInfo);
     }
 }

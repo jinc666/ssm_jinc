@@ -64,7 +64,7 @@ public class UserController {
     }
     //给用户添加角色
     @RequestMapping("/addRoleToUser.do")
-    public String addRoleToUser(@RequestParam(name = "userId",required = true)String userId,@RequestParam(name = "ids",required = true)String[] roleIds) {
+    public String addRoleToUser(@RequestParam(name = "userId",required = true)String userId,@RequestParam(name = "ids",required = true)String[] roleIds) throws Exception{
         userService.addRoleToUser(userId, roleIds);
         return "redirect:findAll.do";
     }
@@ -81,8 +81,7 @@ public class UserController {
 
     //update
     @RequestMapping("/update.do")
-    public String edit(UserInfo user){
-        System.out.println(user);
+    public String edit(UserInfo user)throws Exception{
         userService.update(user);
         return "redirect:findAll.do";
     }

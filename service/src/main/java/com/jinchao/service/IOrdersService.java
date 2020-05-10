@@ -23,4 +23,10 @@ public interface IOrdersService {
      */
     Orders findById(String ordersId) throws Exception;
 
+    /**
+     * 订单编辑
+     * @param orders
+     * @throws Exception
+     */
+    void update(Orders orders)throws Exception;
 }

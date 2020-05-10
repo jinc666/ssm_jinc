@@ -64,11 +64,11 @@
 				<ul class="treeview-menu">
 
 					<li id="system-setting"><a
-						href="${pageContext.request.contextPath}/product/findAll.do?page=1&size=2">
+						href="${pageContext.request.contextPath}/product/findAll.do?page=1&pageSize=2">
 							<i class="fa fa-circle-o"></i> 产品管理
 					</a></li>
 					<li id="system-setting"><a
-						href="${pageContext.request.contextPath}/orders/findAll.do?page=1&size=2"><i
+						href="${pageContext.request.contextPath}/orders/findAll.do?page=1&pageSize=10"><i
 							class="fa fa-circle-o"></i> 订单管理
 					</a></li>
 

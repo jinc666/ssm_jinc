@@ -30,4 +30,8 @@ public class OrdersServiceImpl implements IOrdersService {
         return ordersDao.findById(ordersId);
     }
 
+    @Override
+    public void update(Orders orders)throws Exception {
+        ordersDao.update(orders);
+    }
 }

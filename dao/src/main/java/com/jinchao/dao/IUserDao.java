@@ -41,11 +41,11 @@ public interface IUserDao {
     UserInfo findById(String id)throws Exception;
 
     @Select("select * from role where id not in(select roleId from users_role where userId=#{userId})")
-    List<Role> findOtherRoles(String userId);
+    List<Role> findOtherRoles(String userId)throws Exception;
 
     @Insert("insert into users_role(userId,roleId) values(#{userId},#{roleId})")
-    void addRoleToUser(@Param("userId") String userId , @Param("roleId") String roleId);
+    void addRoleToUser(@Param("userId") String userId , @Param("roleId") String roleId)throws Exception;
 
     @Update("update users set username=#{username},password=#{password},email=#{email},phoneNum=#{phoneNum},status=#{status} where id = #{id}")
-    void update(UserInfo userInfo);
+    void update(UserInfo userInfo)throws Exception;
 }

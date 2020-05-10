@@ -19,6 +19,10 @@ public class Orders {
     private Integer payType;
     private String payTypeStr;
     private String orderDesc;
+    // 商品id
+    private Long productId;
+    // 用户id
+    private Long memberId;
 
     public String getId() {
         return id;
@@ -135,5 +139,21 @@ public class Orders {
 
     public void setOrderDesc(String orderDesc) {
         this.orderDesc = orderDesc;
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
+
+    public Long getMemberId() {
+        return memberId;
+    }
+
+    public void setMemberId(Long memberId) {
+        this.memberId = memberId;
     }
 }

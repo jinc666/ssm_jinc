@@ -18,8 +18,9 @@ public class ProductServiceImpl implements IProductService {
     private IProductDao productDao;
 
     @Override
-    public List<Product> findAll(int page, int size) throws Exception {
-        PageHelper.startPage(page, size);
+    public List<Product> findAll(int page, int pageSize) throws Exception {
+        //参数 pageNum 是 页码值,pageSize 是每页显示的条数
+        PageHelper.startPage(page, pageSize);
         return productDao.findAll();
     }
 

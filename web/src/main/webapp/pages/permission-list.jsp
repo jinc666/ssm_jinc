@@ -138,7 +138,7 @@
 										<th class="sorting_asc">ID</th>
 										<th class="sorting_desc">权限名称</th>
 										<th class="sorting_asc sorting_asc_disabled">URL</th>
-										<%--<th class="text-center">操作</th>--%>
+										<th class="text-center">操作</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -149,10 +149,9 @@
 											<td>${p.id }</td>
 											<td>${p.permissionName }</td>
 											<td>${p.url }</td>
-										<%--	<td class="text-center">
-												<a href="${pageContext.request.contextPath}/role/findById.do?id=${p.id}" class="btn bg-olive btn-xs">详情</a>
-												<a href="${pageContext.request.contextPath}/user/findUserByIdAndAllRole.do?id=${p.id}" class="btn bg-olive btn-xs">添加角色</a>
-											</td>--%>
+											<td class="text-center">
+												<a href="${pageContext.request.contextPath}/permission/eidt.do?id=${p.id}" class="btn bg-olive btn-xs">编辑</a>
+											</td>
 										</tr>
 									</c:forEach>
 								</tbody>

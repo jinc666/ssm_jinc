@@ -20,9 +20,9 @@ public class ProductController {
     //查询全部产品
     @RequestMapping("findAll.do")
     //@RolesAllowed("ADMIN")  //只有admin角色才可以访问
-    public ModelAndView findAll(@RequestParam(name = "page", required = true, defaultValue = "1") Integer page, @RequestParam(name = "size", required = true, defaultValue = "2") Integer size) throws Exception {
+    public ModelAndView findAll(@RequestParam(name = "page", required = true, defaultValue = "1") Integer page, @RequestParam(name = "pageSize", required = true, defaultValue = "2") Integer pageSize) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
-        List<Product> productList = productService.findAll(page, size);
+        List<Product> productList = productService.findAll(page, pageSize);
         PageInfo pageInfo = new PageInfo(productList);
         modelAndView.addObject("pageInfo", pageInfo);
         modelAndView.setViewName("product-list");
@@ -43,19 +43,18 @@ public class ProductController {
         return "redirect:findAll.do";
     }
 
-    @RequestMapping("/editProduct.do")
+    @RequestMapping("/edit.do")
     public ModelAndView updateProduct(@RequestParam(name = "id",required = true) String id) throws Exception{
         ModelAndView modelAndView = new ModelAndView();
         Product product = productService.findProductById(id);
         modelAndView.addObject("product" , product);
         modelAndView.addObject("id" , product.getId());
-        modelAndView.setViewName("product-update");
+        modelAndView.setViewName("product-edit");
         return modelAndView;
     }
 
-    @RequestMapping("/updateProduct.do")
+    @RequestMapping("/update.do")
     public String updateProduct(Product product){
-        System.out.println(product);
         productService.updateProduct(product);
         return "redirect:findAll.do";
     }

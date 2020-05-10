@@ -54,4 +54,19 @@ public class RoleController {
         return "redirect:findAll.do";
     }
 
+    @RequestMapping("/edit.do")
+    public ModelAndView edit(@RequestParam(name = "id", required = true)String id)throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+        Role byId = roleService.findById(id);
+        modelAndView.addObject("role", byId);
+        modelAndView.addObject("id" , byId.getId());
+        modelAndView.setViewName("role-edit");
+        return modelAndView;
+    }
+@RequestMapping("/update.do")
+    public String update(Role role) {
+        roleService.update(role);
+        return "redirect:findAll.do";
+    }
+
 }

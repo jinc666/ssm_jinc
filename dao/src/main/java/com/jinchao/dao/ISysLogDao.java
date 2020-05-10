@@ -12,5 +12,5 @@ public interface ISysLogDao {
     public void save(SysLog sysLog)throws Exception;
 
     @Select("select * from syslog")
-    List<SysLog> findAll();
+    List<SysLog> findAll()throws Exception;
 }
