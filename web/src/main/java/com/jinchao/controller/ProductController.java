@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @Controller
@@ -19,7 +20,6 @@ public class ProductController {
 
     //查询全部产品
     @RequestMapping("findAll.do")
-    //@RolesAllowed("ADMIN")  //只有admin角色才可以访问
     public ModelAndView findAll(@RequestParam(name = "page", required = true, defaultValue = "1") Integer page, @RequestParam(name = "pageSize", required = true, defaultValue = "2") Integer pageSize) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         List<Product> productList = productService.findAll(page, pageSize);
@@ -31,6 +31,7 @@ public class ProductController {
 
     //产品添加
     @RequestMapping("/save.do")
+    @RolesAllowed("ADMIN")  //只有admin角色才可以访问
     public String save(Product product) throws Exception {
         productService.save(product);
         return "redirect:findAll.do";

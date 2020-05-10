@@ -63,7 +63,7 @@ public class RoleController {
         modelAndView.setViewName("role-edit");
         return modelAndView;
     }
-@RequestMapping("/update.do")
+    @RequestMapping("/update.do")
     public String update(Role role) {
         roleService.update(role);
         return "redirect:findAll.do";
