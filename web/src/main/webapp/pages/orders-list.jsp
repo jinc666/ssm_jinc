@@ -85,13 +85,13 @@
         <!-- 内容头部 -->
         <section class="content-header">
             <h1>
-                数据管理
-                <small>数据列表</small>
+                基础数据
+                <small>订单列表</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
-                <li><a href="#">数据管理</a></li>
-                <li class="active">数据列表</li>
+                <li><a href="#">基础数据</a></li>
+                <li class="active">订单列表</li>
             </ol>
         </section>
         <!-- 内容头部 /-->
@@ -179,7 +179,7 @@
                 </div>
 
                 <div class="box-footer">
-                    <div class="pull-left">
+<%--                    <div class="pull-left">
                         <div class="form-group form-inline">
                             总共${pageInfo.pages}页，共${pageInfo.total}条数据。 每页
                             <select class="form-control" id="changePageSize" onchange="changePageSize()">
@@ -197,7 +197,7 @@
                                 <option>1</option>
                             </select> 条
                         </div>
-                    </div>
+                    </div>--%>
 
                     <div class="box-tools pull-right">
                         <ul class="pagination">
@@ -314,14 +314,14 @@
         src="${pageContext.request.contextPath}/plugins/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
 <script>
 
-    function changePageSize() {
+/*    function changePageSize() {
         //获取下拉框的值
         var pageSize = $("#changePageSize").val();
 
         //向服务器发送请求，改变没页显示条数
         location.href = "${pageContext.request.contextPath}/orders/findAll.do?page=1&pageSize="
             + pageSize;
-    }
+    }*/
 
     $(document).ready(function () {
         // 选择框

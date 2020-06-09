@@ -19,16 +19,16 @@ public class RoleController {
     private IRoleService roleService;
 
     @RequestMapping("/findAll.do")
-    public ModelAndView findAll() throws Exception{
+    public ModelAndView findAll() throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         List<Role> roleList = roleService.findAll();
-        modelAndView.addObject("roleList",roleList);
+        modelAndView.addObject("roleList", roleList);
         modelAndView.setViewName("role-list");
         return modelAndView;
     }
 
     @RequestMapping("/save.do")
-    public String save(Role role) throws Exception{
+    public String save(Role role) throws Exception {
         roleService.save(role);
         return "redirect:findAll.do";
     }
@@ -42,7 +42,7 @@ public class RoleController {
         //2.根据roleId查询可以添加的权限
         List<Permission> otherPermissions = roleService.findOtherPermission(roleId);
         modelAndView.addObject("role", role);
-        modelAndView.addObject("permissionList",otherPermissions);
+        modelAndView.addObject("permissionList", otherPermissions);
         modelAndView.setViewName("role-permission-add");
         return modelAndView;
     }
@@ -55,18 +55,28 @@ public class RoleController {
     }
 
     @RequestMapping("/edit.do")
-    public ModelAndView edit(@RequestParam(name = "id", required = true)String id)throws Exception {
+    public ModelAndView edit(@RequestParam(name = "id", required = true) String id) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         Role byId = roleService.findById(id);
         modelAndView.addObject("role", byId);
-        modelAndView.addObject("id" , byId.getId());
+        modelAndView.addObject("id", byId.getId());
         modelAndView.setViewName("role-edit");
         return modelAndView;
     }
+
     @RequestMapping("/update.do")
-    public String update(Role role) {
+    public String update(Role role) throws Exception {
         roleService.update(role);
         return "redirect:findAll.do";
     }
 
+    @RequestMapping("/showPermission.do")
+    public ModelAndView findPermissionByRoleId(@RequestParam(name = "id", required = true) String id) throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+        List<Permission> lp = roleService.findPermissionByRoleId(id);
+        modelAndView.addObject("role", lp);
+        modelAndView.setViewName("role-show");
+        return modelAndView;
+    }
 }
+

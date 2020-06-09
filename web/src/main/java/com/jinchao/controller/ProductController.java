@@ -37,7 +37,6 @@ public class ProductController {
         return "redirect:findAll.do";
     }
 
-
     @RequestMapping("/deleteProduct.do")
     public String deleteProduct(@RequestParam(name = "id",required = true) String id) throws Exception{
         productService.deleteProduct(id);

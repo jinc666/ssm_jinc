@@ -34,5 +34,6 @@ public interface IRoleDao {
     void addPermissionToRole(@Param("roleId") String roleId, @Param("permissionId") String permissionId)throws Exception;
 
     @Update("update role set roleName=#{roleName},roleDesc=#{roleDesc} where id = #{id}")
-    void update(Role role);
+    void update(Role role)throws Exception;
+
 }

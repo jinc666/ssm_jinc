@@ -1,6 +1,7 @@
 package com.jinchao.service;
 
 import com.jinchao.domain.Orders;
+import org.springframework.core.annotation.Order;
 
 import java.util.List;
 
@@ -29,4 +30,11 @@ public interface IOrdersService {
      * @throws Exception
      */
     void update(Orders orders)throws Exception;
+
+    /**
+     * 添加一个订单
+     * @param orders
+     * @return
+     */
+    Order save(Orders orders)throws Exception;
 }

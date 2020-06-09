@@ -4,8 +4,8 @@ import com.github.pagehelper.PageHelper;
 import com.jinchao.dao.IOrdersDao;
 import com.jinchao.domain.Orders;
 import com.jinchao.service.IOrdersService;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,4 +34,10 @@ public class OrdersServiceImpl implements IOrdersService {
     public void update(Orders orders)throws Exception {
         ordersDao.update(orders);
     }
+
+    @Override
+    public Order save(Orders orders) throws Exception{
+        return ordersDao.save(orders);
+    }
+
 }

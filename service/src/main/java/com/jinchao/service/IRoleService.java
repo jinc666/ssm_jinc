@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IRoleService {
 
-    public List<Role> findAll()throws Exception;
+    List<Role> findAll()throws Exception;
 
     void save(Role role)throws Exception;
 
@@ -17,5 +17,7 @@ public interface IRoleService {
 
     void addPermissionToRole(String roleId, String[] permissionIds) throws Exception;
 
-    void update(Role role);
+    void update(Role role)throws Exception;
+
+    List<Permission> findPermissionByRoleId(String id) throws Exception;
 }

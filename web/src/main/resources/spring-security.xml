@@ -8,6 +8,7 @@
     http://www.springframework.org/schema/security
     http://www.springframework.org/schema/security/spring-security.xsd">
 
+    <!--方法级别权限控制-->
     <sercurity:global-method-security pre-post-annotations="enabled" jsr250-annotations="enabled" secured-annotations="enabled"/>
 
     <!-- 配置不拦截的资源 -->

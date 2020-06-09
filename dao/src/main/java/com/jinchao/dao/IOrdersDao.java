@@ -4,6 +4,7 @@ import com.jinchao.domain.Member;
 import com.jinchao.domain.Orders;
 import com.jinchao.domain.Product;
 import org.apache.ibatis.annotations.*;
+import org.springframework.core.annotation.Order;
 
 import java.util.List;
 
@@ -23,8 +24,6 @@ public interface IOrdersDao {
 })
     List<Orders> findAll()throws Exception;
 
-
-
     @Select("select * from orders where id=#{ordersId}")
     @Results({
             @Result(id = true, property = "id", column = "id"),
@@ -43,8 +42,9 @@ public interface IOrdersDao {
     })
     Orders findById(String ordersId) throws Exception;
 
-
     @Update("update orders set orderNum=#{orderNum},peopleCount=#{peopleCount},orderDesc=#{orderDesc},payType=#{payType},orderStatus=#{orderStatus},productId=#{productId},memberId=#{memberId} where id = #{id} ")
     void update(Orders orders)throws Exception;
 
+    @Insert("insert into orders (orderNum,orderTime,peopleCount,orderDesc,payType,orderStatus,productId,memberId) values (#{orderNum},#{orderTime},#{peopleCount},#{orderDesc},#{payType},#{orderStatus},#{productId},#{memberId}) ")
+    Order save(Orders orders)throws Exception;
 }

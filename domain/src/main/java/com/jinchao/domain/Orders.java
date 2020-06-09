@@ -1,6 +1,7 @@
 package com.jinchao.domain;
 
 import com.jinchao.utils.DateUtils;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 public class Orders {
     private String id;
     private String orderNum;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date orderTime;
     private String orderTimeStr;
     private int orderStatus;
@@ -20,9 +22,9 @@ public class Orders {
     private String payTypeStr;
     private String orderDesc;
     // 商品id
-    private Long productId;
+    private String productId;
     // 用户id
-    private Long memberId;
+    private String  memberId;
 
     public String getId() {
         return id;
@@ -49,7 +51,7 @@ public class Orders {
     }
 
     public String getOrderTimeStr() {
-        if (orderTime!=null) orderTimeStr = DateUtils.date2String(orderTime,"yyyyyy-MM-dd HH:mm");
+        if (orderTime!=null) orderTimeStr = DateUtils.date2String(orderTime,"yyyy-MM-dd HH:mm");
         return orderTimeStr;
     }
 
@@ -141,19 +143,40 @@ public class Orders {
         this.orderDesc = orderDesc;
     }
 
-    public Long getProductId() {
+    public String getProductId() {
         return productId;
     }
 
-    public void setProductId(Long productId) {
+    public void setProductId(String productId) {
         this.productId = productId;
     }
 
-    public Long getMemberId() {
+    public String getMemberId() {
         return memberId;
     }
 
-    public void setMemberId(Long memberId) {
+    public void setMemberId(String memberId) {
         this.memberId = memberId;
+    }
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "id='" + id + '\'' +
+                ", orderNum='" + orderNum + '\'' +
+                ", orderTime=" + orderTime +
+                ", orderTimeStr='" + orderTimeStr + '\'' +
+                ", orderStatus=" + orderStatus +
+                ", orderStatusStr='" + orderStatusStr + '\'' +
+                ", peopleCount=" + peopleCount +
+                ", product=" + product +
+                ", travellers=" + travellers +
+                ", member=" + member +
+                ", payType=" + payType +
+                ", payTypeStr='" + payTypeStr + '\'' +
+                ", orderDesc='" + orderDesc + '\'' +
+                ", productId='" + productId + '\'' +
+                ", memberId='" + memberId + '\'' +
+                '}';
     }
 }

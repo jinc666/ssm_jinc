@@ -48,4 +48,8 @@ public class PermissionController {
         return "redirect:findAll.do";
     }
 
+    public static void main(String[] args) {
+        System.out.println("helloworld");
+    }
+
 }

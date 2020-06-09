@@ -1,5 +1,6 @@
 package com.jinchao.service.impl;
 
+import com.jinchao.dao.IPermissionDao;
 import com.jinchao.dao.IRoleDao;
 import com.jinchao.domain.Permission;
 import com.jinchao.domain.Role;
@@ -16,6 +17,9 @@ public class RoleServiceImpl implements IRoleService {
 
     @Autowired
     private IRoleDao roleDao;
+
+    @Autowired
+    private IPermissionDao permissionDao;
 
     @Override
     public List<Role> findAll() throws Exception {
@@ -45,7 +49,12 @@ public class RoleServiceImpl implements IRoleService {
     }
 
     @Override
-    public void update(Role role) {
+    public void update(Role role) throws Exception{
         roleDao.update(role);
+    }
+
+    @Override
+    public List<Permission> findPermissionByRoleId(String id)throws Exception {
+        return permissionDao.findPermissionByRoleId(id);
     }
 }
