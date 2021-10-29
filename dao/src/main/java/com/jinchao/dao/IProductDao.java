@@ -29,4 +29,9 @@ public interface IProductDao {
 
     @Update("update product set productNum=#{productNum},productName=#{productName},cityName=#{cityName},departureTime=#{departureTime},productPrice=#{productPrice},productDesc=#{productDesc},productStatus=#{productStatus} where id = #{id}")
     void updateProduct(Product product);
+
+
+    public static void main(String[] args) {
+        System.out.println("HelloWorld");
+    }
 }
